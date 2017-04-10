@@ -17,8 +17,8 @@ pip install cubey
 Within a python interpreter type the following:
 
 ```Python
-import cubey
-c = cubey.Cube()
+import cubey as qb
+c = qb.Cube()
 print c
 print "Is solved?", c.is_solved()
 ```
