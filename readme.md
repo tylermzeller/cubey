@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tylermzeller/cubey.svg?branch=master)](https://travis-ci.org/tylermzeller/cubey)
+
 Author: Tyler Zeller
 
 A fully functional puzzle cube written in Python 2.7.10.
