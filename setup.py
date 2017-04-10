@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='cubey',
-      version='1.0',
+      version='1.1',
       description='A fully functional puzzle cube written in python.',
       url='http://github.com/tylermzeller/cubey',
       author='Tyler Zeller',

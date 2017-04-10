@@ -30,6 +30,14 @@ class Cube(object):
     def __init__(self):
         self.to_solved()
 
+    def __eq__(self, other):
+        if isinstance(other, Cube):
+            return (self._F == other._F and self._B == other._B and
+                    self._R == other._R and self._L == other._L and
+                    self._U == other._U and self._D == other._D)
+        else:
+            return False
+
     '''
     ---------------------------------------------------------------------------
     |    Public Methods:                                                      |
@@ -277,26 +285,13 @@ class Cube(object):
         self.u2()
         self.d2()
 
-    def trigger(self, times=1):
-        for i in range(times):
-            self.r()
-            self.u()
-            self.r_prime()
-    def trigger_u2(self, times=1):
-        for i in range(times):
-            self.r()
-            self.u2()
-            self.r_prime()
-
-    def sune(self, times=1):
-        for i in range(times):
-            self.trigger()
-            self.u()
-            self.trigger_u2()
-
-    def centers(self, times=1):
+    def to_centers(self, times=1):
         if not self.is_solved():
             self.to_solved()
+
+        times = max(times, 0)
+        times_to_solve = 3
+        times %= times_to_solve
         for i in range(times):
             self.r()
             self.l_prime()
@@ -306,6 +301,33 @@ class Cube(object):
             self.b()
             self.r()
             self.l_prime()
+
+    def trigger(self, times=1):
+        times = max(times, 0)
+        times_to_solve = 4
+        times %= times_to_solve
+        for i in range(times):
+            self.r()
+            self.u()
+            self.r_prime()
+
+    def trigger_u2(self, times=1):
+        times = max(times, 0)
+        times_to_solve = 2
+        times %= times_to_solve
+        for i in range(times):
+            self.r()
+            self.u2()
+            self.r_prime()
+
+    def sune(self, times=1):
+        times = max(times, 0)
+        times_to_solve = 6
+        times %= times_to_solve
+        for i in range(times):
+            self.trigger()
+            self.u()
+            self.trigger_u2()
 
     '''
     ---------------------------------------------------------------------------

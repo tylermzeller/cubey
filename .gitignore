@@ -1,6 +1,6 @@
-test.py
 trash.py
 .DS_Store
+test.py
 
 # Compiled python modules.
 *.pyc
