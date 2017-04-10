@@ -18,6 +18,7 @@ Within a python interpreter type the following:
 import cubey
 c = cubey.Cube()
 print c
+print "Is solved?", c.is_solved()
 ```
 
 which should print:
