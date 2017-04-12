@@ -429,7 +429,7 @@ class Cube(object):
         inner_face = Cube._get_inner_face(face)
 
         # Rotate the inner layers
-        Cube._rotate_face_cw(inner_face)
+        Cube._rotate_face_ccw(inner_face)
 
     @staticmethod
     def _get_inner_face(face):
