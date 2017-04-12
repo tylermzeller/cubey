@@ -68,6 +68,16 @@ class TestCubeMethods(unittest.TestCase):
         d.trigger_u2(effective_times)
         self.assertEqual(c, d)
 
+    def test_times_trigger_u2_negative(self):
+        c = qb.Cube()
+        c.trigger_u2(-1)
+        self.assertTrue(c.is_solved())
+
+    def test_trigger_u2_2(self):
+        c = qb.Cube()
+        c.trigger_u2(2)
+        self.assertTrue(c.is_solved())
+
     def test_sune_6(self):
         c = qb.Cube()
         c.sune(6)
