@@ -344,8 +344,8 @@ class Cube(object):
     def _parse_formula(self, formula):
         moves = formula.strip().split()
         for move in moves:
-            if len(move) >= 3 || len(move) == 0:
-                print 'Error at move ' + move = '. Moves must have a length of 1 or 2.'
+            if len(move) >= 3 or len(move) == 0:
+                print 'Error at move ' + move + '. Moves must have a length of 1 or 2.'
             else:
                 self._perform(move)
 
@@ -374,17 +374,17 @@ class Cube(object):
             self.u_prime()
         elif move == 'D\'':
             self.d_prime()
-        elif move == 'F2' || move == '2F':
+        elif move == 'F2' or move == '2F':
             self.f2()
-        elif move == 'B2' || move == '2B':
+        elif move == 'B2' or move == '2B':
             self.b2()
-        elif move == 'R2' || move == '2R':
+        elif move == 'R2' or move == '2R':
             self.r2()
-        elif move == 'L2' || move == '2L':
+        elif move == 'L2' or move == '2L':
             self.l2()
-        elif move == 'U2' || move == '2U':
+        elif move == 'U2' or move == '2U':
             self.u2()
-        elif move == 'D2' || move == '2D':
+        elif move == 'D2' or move == '2D':
             self.d2()
 
     # Swaps the elements in the buffer list with the cooresponding row or col of the face
