@@ -269,9 +269,9 @@ class Cube(object):
         self.b()
 
     def is_solved(self):
-        for face in [self._F, self._B, self._L, self._R, self._U, self._D]:
-            for row in face:
-                return all([elm == face[DIMENSION / 2][DIMENSION / 2] for elm in row])
+            return all([elm == face[DIMENSION / 2][DIMENSION / 2]
+            for face in [self._F, self._B, self._L, self._R, self._U, self._D]
+            for row in face for elm in row])
 
     def to_solved(self):
         self._F = [[colors['RED'] for j in iter_dim] for i in iter_dim]
