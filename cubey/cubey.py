@@ -44,9 +44,10 @@ class Cube(object):
     ---------------------------------------------------------------------------
     '''
 
-    def do(self, formula):
+    def do(self, formula, times=1):
         if isinstance(formula, str):
-            self._parse_formula(formula)
+            for _ in range(times):
+                self._parse_formula(formula)
         else:
             print 'Error: Input formula is not a string.'
 
@@ -269,16 +270,16 @@ class Cube(object):
         self.b()
 
     def is_solved(self):
-            return all([elm == face[DIMENSION / 2][DIMENSION / 2]
-            for face in [self._F, self._B, self._L, self._R, self._U, self._D]
-            for row in face for elm in row])
+        return all([elm == face[DIMENSION / 2][DIMENSION / 2]
+        for face in [self._F, self._B, self._L, self._R, self._U, self._D]
+        for row in face for elm in row])
 
     def to_solved(self):
-        self._F = [[colors['RED'] for j in iter_dim] for i in iter_dim]
+        self._F = [[colors['RED']    for j in iter_dim] for i in iter_dim]
         self._B = [[colors['PURPLE'] for j in iter_dim] for i in iter_dim]
-        self._L = [[colors['GREEN'] for j in iter_dim] for i in iter_dim]
-        self._R = [[colors['BLUE'] for j in iter_dim] for i in iter_dim]
-        self._U = [[colors['WHITE'] for j in iter_dim] for i in iter_dim]
+        self._L = [[colors['GREEN']  for j in iter_dim] for i in iter_dim]
+        self._R = [[colors['BLUE']   for j in iter_dim] for i in iter_dim]
+        self._U = [[colors['WHITE']  for j in iter_dim] for i in iter_dim]
         self._D = [[colors['YELLOW'] for j in iter_dim] for i in iter_dim]
 
     def to_checker(self):
@@ -413,8 +414,8 @@ class Cube(object):
             _row = Cube._get_row(face, row)
             Cube._swap_row_or_col(swap_buffer, _row)
 
-            # if reverse:
-            #     _row.reverse()
+            if reverse:
+                _row.reverse()
 
     # Face *MUST* be a square matrix
     @staticmethod
