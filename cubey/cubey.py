@@ -44,6 +44,12 @@ class Cube(object):
     ---------------------------------------------------------------------------
     '''
 
+    def do(self, formula):
+        if isinstance(formula, str):
+            self._parse_formula(formula)
+        else:
+            print 'Error: Input formula is not a string.'
+
     # Turn the right face clockwise. Affects faces F, D, U, B
     def r(self):
         # First create a temporary buffer holding the front face's right col
@@ -334,6 +340,52 @@ class Cube(object):
     |    Helper Methods:                                                      |
     ---------------------------------------------------------------------------
     '''
+
+    def _parse_formula(self, formula):
+        moves = formula.strip().split()
+        for move in moves:
+            if len(move) >= 3 || len(move) == 0:
+                print 'Error at move ' + move = '. Moves must have a length of 1 or 2.'
+            else:
+                self._perform(move)
+
+    def _perform(self, move):
+        if move == 'F':
+            self.f()
+        elif move == 'B':
+            self.b()
+        elif move == 'R':
+            self.r()
+        elif move == 'L':
+            self.l()
+        elif move == 'U':
+            self.u()
+        elif move == 'D':
+            self.d()
+        elif move == 'F\'':
+            self.f_prime()
+        elif move == 'B\'':
+            self.b_prime()
+        elif move == 'R\'':
+            self.r_prime()
+        elif move == 'L\'':
+            self.l_prime()
+        elif move == 'U\'':
+            self.u_prime()
+        elif move == 'D\'':
+            self.d_prime()
+        elif move == 'F2' || move == '2F':
+            self.f2()
+        elif move == 'B2' || move == '2B':
+            self.b2()
+        elif move == 'R2' || move == '2R':
+            self.r2()
+        elif move == 'L2' || move == '2L':
+            self.l2()
+        elif move == 'U2' || move == '2U':
+            self.u2()
+        elif move == 'D2' || move == '2D':
+            self.d2()
 
     # Swaps the elements in the buffer list with the cooresponding row or col of the face
     @staticmethod
