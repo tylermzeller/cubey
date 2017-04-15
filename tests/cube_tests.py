@@ -1,6 +1,14 @@
 import unittest
 import cubey as qb
 
+colors = qb.colors
+W = colors['WHITE']
+R = colors['RED']
+B = colors['BLUE']
+G = colors['GREEN']
+Y = colors['YELLOW']
+P = colors['PURPLE']
+
 class TestCubeMethods(unittest.TestCase):
 
     def test_solved(self):
@@ -82,6 +90,61 @@ class TestCubeMethods(unittest.TestCase):
         c = qb.Cube()
         c.sune(6)
         self.assertTrue(c.is_solved())
+
+    '''
+    ---------------------------------------------------------------------------
+    |    Cube Twist Methods:                                                  |
+    ---------------------------------------------------------------------------
+    '''
+
+    def test_f(self):
+        c = qb.Cube()
+        c.f()
+        front_face = [[R, R, R], [R, R, R], [R, R, R]]
+        back_face = [[P, P, P], [P, P, P], [P, P, P]]
+        right_face = [[W, B, B], [W, B, B], [W, B, B]]
+        left_face = [[G, G, Y], [G, G, Y], [G, G, Y]]
+        up_face = [[W, W, W], [W, W, W], [G, G, G]]
+        down_face = [[B, B, B], [Y, Y, Y], [Y, Y, Y]]
+        self.assertEqual(c._F, front_face)
+        self.assertEqual(c._B, back_face)
+        self.assertEqual(c._R, right_face)
+        self.assertEqual(c._L, left_face)
+        self.assertEqual(c._U, up_face)
+        self.assertEqual(c._D, down_face)
+
+    def test_f_prime(self):
+        c = qb.Cube()
+        c.f_prime()
+        front_face = [[R, R, R], [R, R, R], [R, R, R]]
+        back_face = [[P, P, P], [P, P, P], [P, P, P]]
+        right_face = [[Y, B, B], [Y, B, B], [Y, B, B]]
+        left_face = [[G, G, W], [G, G, W], [G, G, W]]
+        up_face = [[W, W, W], [W, W, W], [B, B, B]]
+        down_face = [[G, G, G], [Y, Y, Y], [Y, Y, Y]]
+        self.assertEqual(c._F, front_face)
+        self.assertEqual(c._B, back_face)
+        self.assertEqual(c._R, right_face)
+        self.assertEqual(c._L, left_face)
+        self.assertEqual(c._U, up_face)
+        self.assertEqual(c._D, down_face)
+
+    def test_f2(self):
+        c = qb.Cube()
+        c.f2()
+        front_face = [[R, R, R], [R, R, R], [R, R, R]]
+        back_face = [[P, P, P], [P, P, P], [P, P, P]]
+        right_face = [[G, B, B], [G, B, B], [G, B, B]]
+        left_face = [[G, G, B], [G, G, B], [G, G, B]]
+        up_face = [[W, W, W], [W, W, W], [Y, Y, Y]]
+        down_face = [[W, W, W], [Y, Y, Y], [Y, Y, Y]]
+        self.assertEqual(c._F, front_face)
+        self.assertEqual(c._B, back_face)
+        self.assertEqual(c._R, right_face)
+        self.assertEqual(c._L, left_face)
+        self.assertEqual(c._U, up_face)
+        self.assertEqual(c._D, down_face)
+
 
     '''
     ---------------------------------------------------------------------------
